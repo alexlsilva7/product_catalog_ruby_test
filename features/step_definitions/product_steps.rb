@@ -18,3 +18,20 @@ end
 Then('I should not see {string}') do |content|
   assert_no_text(content)
 end
+
+Given('there is a product named {string}') do |name|
+  category = Category.first || Category.create!(name: 'Default')
+  Product.create!(name: name, description: 'Sample description', price: 100.0, category: category)
+end
+
+When('I fill in {string} with {string}') do |field, value|
+  fill_in field, with: value
+end
+
+When('I press {string}') do |button|
+  click_button button
+end
+
+Then('I should not see {string}') do |content|
+  assert_no_text(content)
+end
