@@ -28,3 +28,7 @@ end
 Then('I should see {string}') do |content|
   expect(page).to have_content(content)
 end
+
+Given('there is a category named {string}') do |name|
+  Category.create!(name: name, description: 'Sample description')
+end
